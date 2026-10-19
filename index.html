@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Ilaaj — find Sehat Card empanelled hospitals in KP, check treatment coverage, and prepare for admission.">
+  <title>Ilaaj — Sehat Card Hospital Finder</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <header class="header">
+    <div class="logo-row">
+      <span class="logo">✚</span>
+      <div>
+        <h1>Ilaaj</h1>
+        <div class="hello">Sehat Card hospitals · Khyber Pakhtunkhwa</div>
+      </div>
+    </div>
+    <p class="sub">Find the hospital that accepts your Sehat Card — before you travel.</p>
+  </header>
+
+  <!-- ============ FINDER ============ -->
+  <section class="view active" id="view-finder">
+    <div class="search-wrap">
+      <span class="icon">🔍</span>
+      <input type="text" id="finder-search" placeholder="Search hospital, city or specialty…" autocomplete="off">
+    </div>
+
+    <div class="section-title">City</div>
+    <div class="chips" id="finder-cities"></div>
+
+    <label class="toggle-row" for="finder-sehat">
+      <span class="toggle-icon">🛡️</span>
+      <span class="toggle-label">Sehat Card accepted only</span>
+      <span class="switch"><input type="checkbox" id="finder-sehat" checked><span class="knob"></span></span>
+    </label>
+
+    <div class="list-head">
+      <span class="section-title" id="finder-count"></span>
+      <span class="muted">sorted by distance</span>
+    </div>
+    <div id="finder-list"></div>
+
+    <div class="card cta-card">
+      <h2>💰 Quoted a big bill?</h2>
+      <p class="muted">Check whether Sehat Card covers your treatment — before you pay a rupee.</p>
+      <button class="btn" data-goto="view-coverage">Open the Coverage Checker →</button>
+    </div>
+  </section>
+
+  <!-- ============ COVERAGE CHECKER ============ -->
+  <section class="view" id="view-coverage">
+    <div class="card">
+      <h2>✅ Coverage Checker</h2>
+      <p class="muted">Will Sehat Card pay for this treatment? Pick one and see the verdict.</p>
+      <label for="coverage-treatment">Treatment</label>
+      <select id="coverage-treatment"></select>
+      <div style="margin-top:14px;">
+        <button class="btn" id="coverage-check">Check coverage</button>
+      </div>
+    </div>
+    <div id="coverage-result"></div>
+    <div id="coverage-hospitals"></div>
+  </section>
+
+  <!-- ============ ADMISSION GUIDE ============ -->
+  <section class="view" id="view-guide">
+    <div class="section-title">🧾 Documents to carry</div>
+    <p class="muted" id="guide-progress" style="margin:0 2px 10px;"></p>
+    <div class="card" id="guide-checklist"></div>
+
+    <div class="section-title" style="margin-top:22px;">🚩 Report a tout</div>
+    <div class="card">
+      <p class="muted">Asked for a “facilitation fee”? Treatment under Sehat Card is <strong>FREE</strong>. Report it — anonymously.</p>
+      <label for="report-hospital">Hospital name</label>
+      <input type="text" id="report-hospital" placeholder="e.g. DHQ Hospital D.I. Khan" autocomplete="off">
+      <label for="report-amount" style="margin-top:12px;">Amount asked (Rs)</label>
+      <input type="number" id="report-amount" min="0" placeholder="e.g. 10000">
+      <div style="margin-top:14px;">
+        <button class="btn" id="report-submit">Report anonymously</button>
+      </div>
+      <div id="report-error" class="muted" style="color:var(--bad); margin-top:10px; display:none;"></div>
+    </div>
+
+    <div class="section-title" style="margin-top:22px;" id="report-count"></div>
+    <div id="report-list"></div>
+  </section>
+
+  <footer class="foot muted">
+    Demo concept by Muhammad Abbas Khan · UI/UX Designer.<br>
+    Hospital list &amp; costs are <strong>sample data</strong> — a real product would use the official Sehat Card empanelled-hospital list.
+  </footer>
+</div>
+
+<!-- Bottom tab bar -->
+<nav class="tabbar" aria-label="Main navigation">
+  <button class="tab active" data-view="view-finder"><span class="ticon">🏥</span>Finder</button>
+  <button class="tab" data-view="view-coverage"><span class="ticon">✅</span>Coverage</button>
+  <button class="tab" data-view="view-guide"><span class="ticon">🧾</span>Guide</button>
+</nav>
+
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
